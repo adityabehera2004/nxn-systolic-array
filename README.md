@@ -2,7 +2,7 @@
 
 ## Overview
 
-A systolic array is a specialized hardware accelerator for matrix-matrix multiplication. My implementation arranges N×N processing elements (PEs) in a grid, each performing fixed-point 16-bit multiply-accumulate operations. What makes it systolic is the way inputs and outputs propagate through the array, ensuring that data arrives at each PE at precisely the right time for multiplication and results flow out to be accumulated. The FSM controls instruction decoding, data feeding, matrix tiling/chaining, and result draining. This implementation is based on Coding Test 4 in the [specification](eic-coding-tests.pdf) from the Efficient Intelligent Computing Lab at Georgia Tech.
+A systolic array is a specialized hardware accelerator for matrix-matrix multiplication. My implementation arranges N×N processing elements (PEs) in a grid, each performing fixed-point 16-bit multiply-accumulate operations. What makes it systolic is the way inputs and outputs propagate through the array, ensuring that data arrives at each PE at precisely the right time for multiplication and results flow out from each PE to be accumulated. The FSM controls instruction decoding, data feeding, matrix tiling/chaining, and result draining. This implementation is based on Coding Test 4 in the [specification](eic-coding-tests.pdf) from the Efficient Intelligent Computing Lab at Georgia Tech.
 
 ---
 
