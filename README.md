@@ -132,7 +132,7 @@ eic-coding-test/
 - **Type**: Single-port SRAM with asynchronous read and synchronous write
 - **Width**: 16-bit (signed Q8.8 fixed-point)
 - **Format**: Row-major flattened matrix
-- **Access**: Read during compute; written during chaining to store intermediate results as input for next MMM
+- **Access**: Read during compute; written during chaining to store intermediate result as input for next MMM
 - **Files**: `data_mem.v` (initialized with `mem_a.hex`)
 
 For MMM 0, Memory A holds the input matrix. For subsequent MMMs in a chain, the previous output is converted back to Q8.8 and written into Memory A by the state machine.
@@ -149,9 +149,9 @@ The state machine maintains a base address pointer (`b_base`) and advances it af
 #### Memory I (Instruction Sequence)
 - **Type**: Single-port SRAM with asynchronous read and synchronous write
 - **Width**: 32-bit unsigned
-- **Format**: Sequence of dimension groups: `[A, B, C, ..., 0]`
-  - `0` terminates the sequence
+- **Format**: Sequence of matrix dimensions: `[A, B, C, ..., 0]`
   - Each adjacent triplet `(A, B, C)` specifies one matrix multiply: (AxB) x (BxC) = (AxC)
+  - `0` terminates the sequence
 - **Access**: Read-only during compute
 - **Files**: `instr_mem.v` (initialized with `mem_i.hex`)
 
@@ -159,7 +159,7 @@ The state machine maintains a base address pointer (`b_base`) and advances it af
 - **Type**: Dual-port SRAM (one read port, one write port)
 - **Width**: 32-bit (signed Q16.16 fixed-point accumulator)
 - **Format**: Row-major flattened matrix
-- **Access**: Written during DRAIN_READ states; read during WRITEBACK states to get intermediate result for chaining next MMM
+- **Access**: Written after draining; read during chaining to get intermediate result as input for next MMM
 - **Files**: `output_mem.v` (final output is in `sim_n<N>/sim_out_n<N>.hex`)
 
 ---
