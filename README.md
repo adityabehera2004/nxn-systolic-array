@@ -23,8 +23,6 @@ exit  # or Ctrl+D to leave the nix environment
 - **Yosys 0.55+**
 - **GNU Make**
 
----
-
 ## Usage
 
 All commands are run from the `src/` directory. The Makefile supports several modes.
