@@ -104,7 +104,7 @@ eic-coding-test/
 
 ## Architecture
 
-### Top-Level IO (`top_io.v`)
+### Top-Level IO (`top.v`)
 
 | Signal      | Direction | Width  | Description                          |
 |-------------|-----------|--------|--------------------------------------|
