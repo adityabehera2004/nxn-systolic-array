@@ -3,7 +3,7 @@
 // Q8.8 x Q8.8 = Q16.16 product (accumulator has to be Q16.16 to store the result)
 // data will propagate through each PE in the array systolically (A flows left to right, B flows top to bottom)
 // each PE will multiply A and B before letting the result drain down
-// the accumulator at the bottom will add all result in the column together
+// the bottom PE's accumulator will add all the results in the column together
 
 module systolic_pe (
     input  wire        clk,
