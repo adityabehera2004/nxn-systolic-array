@@ -201,14 +201,14 @@ NxN grid of PEs with systolic data flow:
 
 ```
            B[0][0]      B[0][1]      B[0][2]     ...      B[0][N-1]
-              ↓            ↓            ↓                     ↓
+              ↓            ↓            ↓         ↓           ↓
  A[0]  →  PE[0][0]  →  PE[0][1]  →  PE[0][2]  →  ...  →  PE[0][N-1]
               ↓            ↓            ↓         ↓           ↓
  A[1]  →  PE[1][0]  →  PE[1][1]  →  PE[1][2]  →  ...  →  PE[1][N-1]
               ↓            ↓            ↓         ↓           ↓
  A[2]  →  PE[2][0]  →  PE[2][1]  →  PE[2][2]  →  ...  →  PE[2][N-1]
               ↓            ↓            ↓         ↓           ↓
-  ...        ...          ...          ...       ...         ...
+ ...   →     ...    →     ...    →     ...    →  ...  →      ...
               ↓            ↓            ↓         ↓           ↓
 A[N-1] → PE[N-1][0] → PE[N-1][1] → PE[N-1][2] →  ...  → PE[N-1][N-1]
               ↓            ↓            ↓         ↓           ↓
@@ -241,7 +241,7 @@ The FSM orchestrates instruction decoding, matrix loading, systolic computation,
 |-------------|-------------------------------------------------------------------------|
 | `IDLE`      | Wait for `ap_start` pulse to begin                                      |
 | `FETCH_I`   | Set instruction address to current instruction pointer (`ip`)           |
-| `FETCH_A`   | Read/latch `dim_a`; detect end-of-program (`idata == 0`)               |
+| `FETCH_A`   | Read/latch `dim_a`; detect end-of-program (`idata == 0`)                |
 | `FETCH_B`   | Read/latch `dim_b`; advance to setup for current MMM                    |
 | `SETUP`     | Initialize tiling tile counters and buffer pointers                     |
 | `SETUP_WAIT`| Wait for one cycle (housekeeping)                                       |
@@ -257,10 +257,10 @@ The FSM orchestrates instruction decoding, matrix loading, systolic computation,
 | `DRAIN_READ`| Write current drained bottom-row values into output memory              |
 | `NEXT`      | Advance tile indices; after final tile, move to `CHAIN_I`               |
 | `CHAIN_I`   | Read next instruction triplet for chained MMM                           |
-| `CHAIN_D`   | Prepare chained state (convert output Q16.16 back to Q8.8 for input)   |
-| `WB1`       | Writeback converted output into memory A for next MMM                    |
+| `CHAIN_D`   | Prepare chained state (convert output Q16.16 back to Q8.8 for input)    |
+| `WB1`       | Writeback converted output into memory A for next MMM                   |
 | `WB2`       | Finalize writeback; continue `WB1` or restart at `SETUP_WAIT`           |
-| `DONE`      | Assert `ap_done` and wait for next `ap_start`                          |
+| `DONE`      | Assert `ap_done` and wait for next `ap_start`                           |
 
 #### Transitions
 ```
