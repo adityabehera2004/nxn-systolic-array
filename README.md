@@ -213,7 +213,7 @@ NxN grid of PEs with systolic data flow:
 A[N-1] → PE[N-1][0] → PE[N-1][1] → PE[N-1][2] →  ...  → PE[N-1][N-1]
               ↓            ↓            ↓         ↓           ↓
 
-Each PE performs a single MAC operation and lets its result drain out the bottom
+Each PE performs a single MAC operation and passes its result down
 ```
 
 **Key Features:**
