@@ -78,15 +78,15 @@ eic-coding-test/
 ├── REPORT.md                    ← PPA analysis
 ├── flake.nix                    ← Nix flake for reproducible environment
 ├── flake.lock                   ← Nix flake lock file
-├── eic-coding-tests.pdf         ← PDF of coding tests (this one is coding test 4)
+├── eic-coding-tests.pdf         ← PDF of coding tests (this one is Coding Test 4)
 ├── src/
-│   ├── Makefile                 ← simulation build rules
+│   ├── Makefile                 ← Simulation makefile
 │   ├── systolic_pe.v            ← Processing Element (signed 16×16 MAC)
 │   ├── systolic_array.v         ← NxN array of PEs with skewed inputs
 │   ├── state_machine.v          ← FSM controller
-│   ├── data_mem.v               ← Synchronous SRAM for data memory
+│   ├── data_mem.v               ← Single-port SRAM for data memory
+│   ├── instr_mem.v              ← Single-port SRAM for instruction memory
 │   ├── output_mem.v             ← Dual-port SRAM for output memory
-│   ├── instr_mem.v              ← Instruction memory
 │   ├── top.v                    ← Top-level integration of all components
 │   ├── testbench.v              ← Verilog testbench
 │   └── gen_inputs.py            ← Python test data generator
@@ -158,7 +158,7 @@ The state machine maintains a base address pointer (`b_base`) and advances it af
 - **Files**: `instr_mem.v` (initialized with `mem_i.hex`)
 
 #### Memory O (Output Data)
-- **Type**: Dual-port SRAM (one write port, one read port)
+- **Type**: Dual-port SRAM (one read port, one write port)
 - **Width**: 32-bit (signed Q16.16 fixed-point accumulator)
 - **Format**: Row-major flattened matrix
 - **Access**: Written during DRAIN_READ states; read during WRITEBACK states to get intermediate result for chaining next MMM
