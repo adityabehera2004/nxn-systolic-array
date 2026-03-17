@@ -30,9 +30,12 @@ exit  # or Ctrl+D to leave the nix environment
 All commands are run from the `src/` directory. The Makefile supports several modes.
 
 ### Flags
-`N` can be any integer (`N=4`) or a list of integers (`N=4,8`).
-`I` is a comma-separated list of zero-terminated integers (`I=32,16,64,8,16,0`).
+`N` can be any integer (`N=4`) or a list of integers (`N=4,8`)
+
+`I` is a comma-separated list of zero-terminated integers (`I=32,16,64,8,16,0`)
+
 `seed` can be any integer and is used to control the randomization of the input matrized
+
 `wdir` can be used to select a different working directory (`make clean` won't clear custom working directories)
 
 ### Clean
