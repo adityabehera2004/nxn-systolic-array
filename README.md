@@ -80,7 +80,7 @@ eic-coding-test/
 ├── flake.lock                   ← Nix flake lock file
 ├── eic-coding-tests.pdf         ← PDF of coding tests (this one is Coding Test 4)
 ├── src/
-│   ├── Makefile                 ← Simulation makefile
+│   ├── Makefile                 ← Makefile
 │   ├── systolic_pe.v            ← Processing Element (signed 16×16 MAC)
 │   ├── systolic_array.v         ← NxN array of PEs with skewed inputs
 │   ├── state_machine.v          ← FSM controller
