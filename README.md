@@ -42,7 +42,7 @@ Removes all generated simulation artifacts in `working_dir/`
 make clean
 ```
 
-### Identity test examples
+### Identity tests
 `gen_inputs.py` fills the weight matrix with an identity matrix
 
 ```bash
