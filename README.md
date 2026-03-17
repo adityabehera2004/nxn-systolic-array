@@ -161,7 +161,7 @@ The state machine maintains a base address pointer (`b_base`) and advances it af
 - **Type**: Dual-port SRAM (one write port, one read port)
 - **Width**: 32-bit (signed Q16.16 fixed-point accumulator)
 - **Format**: Row-major flattened matrix
-- **Access**: Written by state machine during DRAIN_READ and WRITEBACK states; read during chaining to get intermediate result for next MMM
+- **Access**: Written during DRAIN_READ states; read during WRITEBACK states to get intermediate result for chaining next MMM
 - **Files**: `output_mem.v` (final output is in `sim_n<N>/sim_out_n<N>.hex`)
 
 ---
