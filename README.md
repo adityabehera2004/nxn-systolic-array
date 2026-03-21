@@ -217,7 +217,7 @@ Each PE performs a single MAC operation and passes its result down
 **Key Features:**
 - Input A shifts **left-to-right** along rows; row `i` is delayed by `i` cycles
 - Input B shifts **top-to-bottom** along columns; column `j` is delayed by `j` cycles
-- Ensures A[i][k] and B[k][j] meet at PE[i][j] simultaneously
+- Ensures `A[i][k]` and `B[k][j]` meet at `PE[i][j]` simultaneously
 - PE accumulators chain vertically for systolic drain (bottom row outputs in order)
 
 **Signals:**
