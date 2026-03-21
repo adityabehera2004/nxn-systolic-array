@@ -31,14 +31,14 @@ module systolic_pe (
             out_a <= 16'sd0;
             out_b <= 16'sd0;
             acc   <= 32'sd0;
-        end else if (drain) begin
-            // drain mode: drain the accumulator and load from the PE above
-            acc <= drain_in;
         end else if (compute) begin
             // compute mode: multiply A and B and put it in the accumulator
             out_a <= in_a;
             out_b <= in_b;
             acc   <= acc + (in_a * in_b);
+        end else if (drain) begin
+            // drain mode: drain the accumulator and load from the PE above
+            acc <= drain_in;
         end
     end
 
